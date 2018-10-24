@@ -40,6 +40,7 @@ AppAsset::register($this);
     // Định nghĩa controller tại đây, vd: '/site/categorys' ==> controller: Site, action: categorys
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'API-Demo', 'url' => ['/site/api']],
         ['label' => 'Categorys', 'url' => ['/site/categorys']],
         ['label' => 'Products', 'url' => ['/site/products']],
         ['label' => 'Support', 'url' => ['/site/support']],

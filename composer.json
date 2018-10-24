@@ -18,7 +18,8 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "php-ai/php-ml": "^0.6.2"
+        "php-ai/php-ml": "^0.6.2",
+        "symfony/var-dumper": "^4.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -12,6 +12,17 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\helpers\ArrayHelper;
+// Package for AI and ML
+use Phpml\Classification\KNearestNeighbors;
+use Phpml\Association\Apriori;
+use Phpml\Classification\NaiveBayes;
+use Phpml\Dataset\ArrayDataset;
+use Phpml\Dataset\FilesDataset;
+use Phpml\Dataset\Demo\GlassDataset;
+use Phpml\Dataset\Demo\IrisDataset;
+use Phpml\Math\Matrix;
+
 
 /**
  * Site controller
@@ -212,8 +223,22 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
     public function actionCategorys()
     {
         return $this->render('category');
+    }
+    public function actionApi()
+    {
+        
+        $array = [
+            ['id' => '123', 'data' => 'abc', 'device' => 'laptop'],
+            ['id' => '345', 'data' => 'def', 'device' => 'tablet'],
+            ['id' => '345', 'data' => 'hgi', 'device' => 'smartphone'],
+        ];
+        // $result = ArrayHelper::index($array, "id");
+       
+        $result = ArrayHelper::isAssociative($array, true);
+        dd($result);
     }
 }
