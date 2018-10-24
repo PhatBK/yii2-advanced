@@ -22,6 +22,8 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script type="text/javascript" src="js/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -35,10 +37,15 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    // Định nghĩa controller tại đây, vd: '/site/categorys' ==> controller: Site, action: categorys
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Categorys', 'url' => ['/site/categorys']],
+        ['label' => 'Products', 'url' => ['/site/products']],
+        ['label' => 'Support', 'url' => ['/site/support']],
+        ['label' => 'FeedBack', 'url' => ['/site/feedback']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'About', 'url' => ['/site/about']]
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

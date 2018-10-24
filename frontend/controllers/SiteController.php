@@ -212,4 +212,8 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionCategorys()
+    {
+        return $this->render('category');
+    }
 }
