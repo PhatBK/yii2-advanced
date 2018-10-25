@@ -232,13 +232,20 @@ class SiteController extends Controller
     {
         
         $array = [
-            ['id' => '123', 'data' => 'abc', 'device' => 'laptop'],
-            ['id' => '345', 'data' => 'def', 'device' => 'tablet'],
-            ['id' => '345', 'data' => 'hgi', 'device' => 'smartphone'],
+            ['id' => '123', 'name' => 'aaa', 'class' => 'x'],
+            ['id' => '1000', 'name' => 'bbb', 'class' => 't'],
+            ['id' => '345', 'name' => 'ccc', 'class' => 'y'],
+            ['id' => '678', 'name' => 'fixedVerifyCode', 'class' => 'z'],
+            ['id' => '-987', 'name' => 'ccdfc', 'class' => 'x'],
+            ['id' => '312', 'name' => 'cdfdfdcc', 'class' => 'x'],
+        ];
+        $array1 = [
+            ['id' => '123', 'name' => 'Phat',],
+            ['id' => '03903', 'name' => "Nguyen", 'class' => "ATTT-201"]
         ];
         // $result = ArrayHelper::index($array, "id");
        
-        $result = ArrayHelper::isAssociative($array, true);
-        dd($result);
+        ArrayHelper::multisort( $array, 'id', SORT_ASC, SORT_REGULAR);
+        dd($array);
     }
 }
