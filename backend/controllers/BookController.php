@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use app\models\Book;
 use app\models\BookSearch;
+use app\models\Tables;
+use app\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,6 +67,20 @@ class BookController extends Controller
     public function actionCreate()
     {
         $model = new Book();
+        $tables = Tables::find()->asArray()->all();
+        $users = User::find()->asArray()->all();
+
+        $codeTables = [];
+        $codeUsers = [];
+        $time = Yii::$app->formatter->asTime('now', 'php:H:i:s');
+        $date = Yii::$app->formatter->asDate('now', 'yyyy-MM-dd');
+    
+        foreach ($tables as $tb) {
+            $codeTables[$tb['code']] = $tb['code'];
+        }
+        foreach ($users as $us) {
+            $codeUsers[$us['id']] = $us['id'];
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->code]);
@@ -72,6 +88,10 @@ class BookController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'codeTables' => $codeTables,
+            'codeUsers' => $codeUsers,
+            'time' => $time,
+            'date' => $date,
         ]);
     }
 
@@ -86,12 +106,32 @@ class BookController extends Controller
     {
         $model = $this->findModel($id);
 
+        $tables = Tables::find()->asArray()->all();
+        $users = User::find()->asArray()->all();
+
+        $codeTables = [];
+        $codeUsers = [];
+        $time = $model->time;
+        $date = $model->date;
+    
+        foreach ($tables as $tb) {
+            $codeTables[$tb['code']] = $tb['code'];
+        }
+        foreach ($users as $us) {
+            $codeUsers[$us['id']] = $us['id'];
+        }
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->code]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'codeTables' => $codeTables,
+            'codeUsers' => $codeUsers,
+            'time' => $time,
+            'date' => $date,
         ]);
     }
 

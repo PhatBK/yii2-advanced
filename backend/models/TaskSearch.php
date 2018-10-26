@@ -18,7 +18,7 @@ class TaskSearch extends Task
     public function rules()
     {
         return [
-            [['code', 'code_food', 'code_chef', 'time'], 'safe'],
+            [['code', 'code_food', 'code_chef', 'time', 'status'], 'safe'],
         ];
     }
 

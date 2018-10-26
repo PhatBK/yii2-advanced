@@ -30,10 +30,12 @@ class Tables extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'orders', 'capacity'], 'required'],
+            [['code', 'orders', 'capacity', 'status'], 'required'],
             [['orders', 'capacity'], 'integer'],
             [['code'], 'string', 'max' => 5],
             [['code'], 'unique'],
+            [['status'], 'integer', 'min' => 0, 'max' => 9],
+
         ];
     }
 
@@ -46,6 +48,7 @@ class Tables extends \yii\db\ActiveRecord
             'code' => 'Code',
             'orders' => 'Orders',
             'capacity' => 'Capacity',
+            'status' => "Status"
         ];
     }
 

@@ -19,7 +19,7 @@ class TablesSearch extends Tables
     {
         return [
             [['code'], 'safe'],
-            [['orders', 'capacity'], 'integer'],
+            [['orders', 'capacity', 'status'], 'integer'],
         ];
     }
 
@@ -61,6 +61,7 @@ class TablesSearch extends Tables
         $query->andFilterWhere([
             'orders' => $this->orders,
             'capacity' => $this->capacity,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'code', $this->code]);

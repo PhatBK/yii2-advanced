@@ -31,10 +31,11 @@ class Task extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'code_food', 'code_chef', 'time'], 'required'],
+            [['code', 'code_food', 'code_chef', 'time', 'status'], 'required', 'message' => "Bạn cần nhập đầy đủ các thông tin"],
             [['time'], 'safe'],
             [['code', 'code_food', 'code_chef'], 'string', 'max' => 5],
             [['code'], 'unique'],
+            [['status'], 'integer', 'min' => 0],
             [['code_chef'], 'exist', 'skipOnError' => true, 'targetClass' => Chef::className(), 'targetAttribute' => ['code_chef' => 'code']],
             [['code_food'], 'exist', 'skipOnError' => true, 'targetClass' => Foods::className(), 'targetAttribute' => ['code_food' => 'code']],
         ];
@@ -50,6 +51,7 @@ class Task extends \yii\db\ActiveRecord
             'code_food' => 'Code Food',
             'code_chef' => 'Code Chef',
             'time' => 'Time',
+            'status' => 'Status'
         ];
     }
 
