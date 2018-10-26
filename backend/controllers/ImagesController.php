@@ -3,18 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Menu;
-use app\models\MenuSearch;
-use app\models\Foods;
-use app\models\Tables;
+use app\models\Images;
+use app\models\ImagesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MenuController implements the CRUD actions for Menu model.
+ * ImagesController implements the CRUD actions for Images model.
  */
-class MenuController extends Controller
+class ImagesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,12 +30,12 @@ class MenuController extends Controller
     }
 
     /**
-     * Lists all Menu models.
+     * Lists all Images models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MenuSearch();
+        $searchModel = new ImagesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class MenuController extends Controller
     }
 
     /**
-     * Displays a single Menu model.
+     * Displays a single Images model.
      * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,39 +58,25 @@ class MenuController extends Controller
     }
 
     /**
-     * Creates a new Menu model.
+     * Creates a new Images model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Menu();
-        $foods = Foods::find()->asArray()->all();
-        $tables = Tables::find()->asArray()->all();
-
-        $codeFoods = [];
-        $codeTables = [];
-
-        foreach ($foods as $fd) {
-            $codeFoods[$fd['code']] = $fd['code'];
-        }
-        foreach ($tables as $tb) {
-            $codeTables[$tb['code']] = $tb['code'];
-        }
+        $model = new Images();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->code]);
+            return $this->redirect(['view', 'id' => $model->code_food]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'codeFoods' => $codeFoods,
-            'codeTables' => $codeTables,
         ]);
     }
 
     /**
-     * Updates an existing Menu model.
+     * Updates an existing Images model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -101,32 +85,18 @@ class MenuController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $foods = Foods::find()->asArray()->all();
-        $tables = Tables::find()->asArray()->all();
-
-        $codeFoods = [];
-        $codeTables = [];
-
-        foreach ($foods as $fd) {
-            $codeFoods[$fd['code']] = $fd['code'];
-        }
-        foreach ($tables as $tb) {
-            $codeTables[$tb['code']] = $tb['code'];
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->code]);
+            return $this->redirect(['view', 'id' => $model->code_food]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'codeFoods' => $codeFoods,
-            'codeTables' => $codeTables,
         ]);
     }
 
     /**
-     * Deletes an existing Menu model.
+     * Deletes an existing Images model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -140,15 +110,15 @@ class MenuController extends Controller
     }
 
     /**
-     * Finds the Menu model based on its primary key value.
+     * Finds the Images model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Menu the loaded model
+     * @return Images the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Menu::findOne($id)) !== null) {
+        if (($model = Images::findOne($id)) !== null) {
             return $model;
         }
 

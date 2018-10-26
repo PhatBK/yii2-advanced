@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Foods */
+/* @var $model app\models\Images */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="foods-form">
+<div class="images-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'code_category')->dropDownList($codeCategorys, ['prompt' => '-Chọn mã thể loại-']) ?>
+    <?= $form->field($model, 'code_food')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'image_link')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

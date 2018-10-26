@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'code_food')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'code_food')->dropDownList($codeFoods, ['prompt' => '-Chọn mã món ăn-']) ?>
 
-    <?= $form->field($model, 'code_table')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'code_table')->dropDownList($codeTables, ['prompt' => '-Chọn mã bàn-']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

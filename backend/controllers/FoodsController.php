@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use app\models\Foods;
 use app\models\FoodsSearch;
+use app\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,6 +66,11 @@ class FoodsController extends Controller
     public function actionCreate()
     {
         $model = new Foods();
+        $categorys = Category::find()->asArray()->all();
+        $codeCategorys = [];
+        foreach ($categorys as $ct) {
+            $codeCategorys[$ct['code']] = $ct['code'];
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->code]);
@@ -72,6 +78,7 @@ class FoodsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'codeCategorys' => $codeCategorys,
         ]);
     }
 
@@ -85,6 +92,11 @@ class FoodsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $categorys = Category::find()->asArray()->all();
+        $codeCategorys = [];
+        foreach ($categorys as $ct) {
+            $codeCategorys[$ct['code']] = $ct['code'];
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->code]);
@@ -92,6 +104,7 @@ class FoodsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'codeCategorys' => $codeCategorys,
         ]);
     }
 
