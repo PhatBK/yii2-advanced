@@ -4,3 +4,9 @@ https://www.phamlocblog.com/2016/06/ets-toeic-tests-2016-part-1234567-tai.html
 https://opensource.com/business/16/6/which-php-framework-right-you
 
 https://colorlib.com/wp/bootstrap-social-network-templates/
+
+https://docs.videojs.com/docs/api/volume-bar.html
+
+https://html.spec.whatwg.org/multipage/media.html#the-video-element
+
+https://videojs.com/plugins/
