@@ -10,3 +10,5 @@ https://docs.videojs.com/docs/api/volume-bar.html
 https://html.spec.whatwg.org/multipage/media.html#the-video-element
 
 https://videojs.com/plugins/
+
+https://www.elastic.co/guide/en/logstash/current/advanced-pipeline.html
